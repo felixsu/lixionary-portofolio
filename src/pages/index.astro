@@ -15,17 +15,19 @@ import { Image } from 'astro:assets';
 		<Header />
 		<main>
 			<h1>Hi, I'm Felix!</h1>
-			<Image width={720} height={360} src="https://ik.imagekit.io/lixionary/Felix.jpg" alt="" />
+			<div class="home-main-content">
+				<Image width={720} height={360} src="https://ik.imagekit.io/lixionary/Felix.jpg" alt="" class="home-main-image" />
+				<div class="home-main-text">
+					<p style="margin-top: 0;">
+						Hello! I'm Felix, born around the <strong>early 90s</strong>. I grew up in <strong>Bandung, Indonesia</strong>, where I completed my Electrical Engineering degree. After graduating, I moved to <strong>Jakarta</strong> to start my professional career, and I've been working here ever since. I'm deeply passionate about technology and innovation, currently working in software engineering. I love tackling challenges and bringing new ideas to life through code.
+					</p>
+					<p>
+						Beyond work, I'm an avid <strong>photographer</strong> and love to <strong>travel</strong>, exploring new cultures and landscapes. You'll also find me enjoying <strong>baking</strong> and unwinding with <strong>games</strong>. I'm also a <strong>coffee</strong> enthusiast, and I love to <strong>read</strong> books.
+					</p>
+				</div>
+			</div>
 			
-			<p>This is where I introduce myself and provide a general overview of who I am.</p>
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			
 		</main>
 		<Footer />
 	</body>

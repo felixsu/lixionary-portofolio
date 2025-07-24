@@ -1,0 +1,19 @@
+---
+description: General project knowledge
+globs: 
+alwaysApply: true
+---
+
+# Introduction
+
+This project is a web application to show static content for my personal portfolio. The Project is using Astro framework.
+
+# Structure
+
+the project follows template of astro where most of the content will be inside:
+./src/components
+./src/pages
+
+and the sources of asset is inside:
+./src/content
+./src/assets
