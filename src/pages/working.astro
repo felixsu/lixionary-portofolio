@@ -3,6 +3,44 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const timelineData = [
+	{ 
+		year: 'Early Life', 
+		title: 'Childhood in Bandung', 
+		content: `I grew up in Bandung, a city I just loved for its super mild temperatures, nestled in a natural basin surrounded by amazing volcanic mountains. My early years there were with my mom, who raised me as a single parent since I was three. My school days started at Kalam Kudus, then I moved to St. Aloysius for high school. I was mostly a homebody, not really hanging out much until high school.` 
+	},
+	{ 
+		year: 'University', 
+		title: 'Engineering at ITB', 
+		content: `I pursued Electrical Engineering at the Bandung Institute of Technology, one of Indonesia's top universities, achieving a solid 3.8 GPA. During college, my interest in embedded system programming, chip design, and microprocessor architecture truly blossomed. My final year project was a challenging but rewarding experience: building a 4G LTE hardware decoder and encoder on an FPGA board. It was also during my 6th semester that I earned a full scholarship for a 6-month student exchange program in Kumoh, South Korea, which was a fantastic opportunity to broaden my perspective.` 
+	},
+	{ 
+		year: '2015', 
+		title: 'Career Start: Kartuku', 
+		content: `My professional journey officially kicked off in 2014 at Kartuku, a FinTech company. This role was a perfect bridge from my hardware background, as I started by developing embedded software for EDC payment terminals. It was fascinating to see how low-level programming directly impacted physical devices. Soon after, I seized the chance to pivot into high-level software development, learning Java, Spring Boot, and the Linux command-line interface to help build a robust payment gateway system from the ground up. This shift was heavily influenced by my observations during my South Korea exchange, where I saw Indonesia's manufacturing lagging, making software a more dynamic career path here.` 
+	},
+	{ 
+		year: '2016', 
+		title: 'Joining Ninja Van', 
+		content: `In 2016, my software engineering skills led me to Ninja Van, an exciting logistics startup. I initially joined as a QA Engineer, which was a strategic move to understand the entire product lifecycle from a quality assurance perspective. I built automated testing systems using Selenium and Appium, ensuring our user interfaces were robust and reliable. This role gave me invaluable insight into how different parts of the system interact and the importance of thorough testing.` 
+	},
+	{ 
+		year: '2018', 
+		title: 'Expanding My Skillset: Frontend & Backend', 
+		content: `After about a year in QA, I transitioned to the Frontend Engineer team at Ninja Van, where I focused on developing critical dashboards with Angular JS for managing parcel lifecycles. This expanded my understanding of user experience and front-end architecture. Then, in 2018, amidst Ninja Van's aggressive engineering team expansion, I moved into a Backend Engineer role. Here, I gained deep expertise in building robust Java web applications using the Play Framework, specifically working on optimizing our complex inter-warehouse management systems, which involved tackling significant logistical and data challenges with code.` 
+	},
+	{ 
+		year: '2020', 
+		title: 'Stepping into Leadership', 
+		content: `By 2020, our QA team at Ninja Van had swelled to about 20 people, but we found ourselves without a dedicated manager. Recognizing this critical need, I decided to step up and take on that leadership role. This was a pivotal moment in my career, marking my transition from a purely technical individual contributor to leading and mentoring a growing team. It was a challenging but incredibly rewarding shift.` 
+	},
+	{ 
+		year: '2022-Present', 
+		title: 'Head of Regional QA & Tech Lab Leadership', 
+		content: `My leadership responsibilities expanded significantly in 2021. When the former head of the Indonesia tech lab departed, I was appointed to lead the ID tech lab, double-hatted with overseeing the entire regional QA team across Ninja Van, managing 3 managers under my direct supervision. Then, in 2023, following some company-wide restructuring and downsizing, I was officially made Head of QA for the entire region, overseeing both the Indonesia and Vietnam teams, which totaled 36 people. This journey has been incredibly enriching, teaching me profound lessons in managing diverse, cross-cultural teams, understanding unique regional challenges, and maintaining strong work standards and processes across different geographical locations, a responsibility I continue to uphold today.` 
+	}
+].reverse();
 ---
 
 <!doctype html>
@@ -13,9 +51,162 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header />
 		<main>
-			<h1>About Me</h1>
-			<p>This is where I will put information about my career and working history.</p>
+			<h1>Professional Journey</h1>
+			<div class="timeline-vertical-container">
+				<ul class="timeline-vertical-list" id="timeline-list">
+					{timelineData.map((item, idx) => (
+						<li
+							class={"timeline-vertical-item " + (idx === 0 ? "active" : "")}
+							tabindex="0"
+							role="button"
+							aria-pressed={idx === 0}
+							data-index={idx}
+						>
+							<div class="timeline-dot" />
+							<div class="timeline-labels">
+								<div class="timeline-year">{item.year}</div>
+								<div class="timeline-title">{item.title}</div>
+							</div>
+						</li>
+					))}
+				</ul>
+				<div class="timeline-vertical-content">
+					<div class="timeline-content-box" id="timeline-content-box">
+						<h2>{timelineData[0].title}</h2>
+						<p>{timelineData[0].content}</p>
+					</div>
+				</div>
+			</div>
+			<div id="timeline-data-json" style="display: none;">
+				{JSON.stringify(timelineData)}
+			</div>
+			<script type="module" is:inline>
+				const timelineData = JSON.parse(document.getElementById('timeline-data-json').textContent);
+				let activeIndex = 0;
+				const list = document.getElementById('timeline-list');
+				const contentBox = document.getElementById('timeline-content-box');
+				if (list && contentBox) {
+					list.addEventListener('click', (e) => {
+						let li = e.target;
+						while (li && li.tagName !== 'LI') li = li.parentElement;
+						if (!li) return;
+						const idx = Number(li.dataset.index);
+						if (isNaN(idx)) return;
+						// Remove active from all
+						Array.from(list.children).forEach((el, i) => {
+							el.classList.toggle('active', i === idx);
+							el.setAttribute('aria-pressed', i === idx ? 'true' : 'false');
+						});
+						// Update content
+						contentBox.innerHTML = `<h2>${timelineData[idx].title}</h2><p>${timelineData[idx].content}</p>`;
+						activeIndex = idx;
+					});
+				}
+			</script>
+			<style>
+				.timeline-vertical-container {
+					display: flex;
+					flex-direction: row;
+					gap: 2rem;
+					align-items: flex-start;
+				}
+				.timeline-vertical-list {
+					list-style: none;
+					padding: 0;
+					margin: 0;
+					display: flex;
+					flex-direction: column;
+					gap: 1.5rem;
+					position: relative;
+				}
+				.timeline-vertical-list::before {
+					content: '';
+					position: absolute;
+					left: 32px;
+					top: 0;
+					bottom: 0;
+					width: 2px;
+					background: #d1d5db;
+					z-index: 0;
+				}
+				.timeline-vertical-item {
+					cursor: pointer;
+					padding: 0.5rem 1.5rem;
+					border-radius: 999px;
+					background: #f1f1f1;
+					transition: background 0.2s, color 0.2s;
+					display: flex;
+					align-items: center;
+					gap: 1rem;
+					outline: none;
+					position: relative;
+					z-index: 1;
+				}
+
+				.timeline-vertical-item:hover .timeline-dot {
+					transform: scale(1.2);
+				}
+				.timeline-vertical-item.active {
+					background: #e0e7ff;
+					color: #22223b;
+					font-weight: bold;
+				}
+				.timeline-dot {
+					width: 16px;
+					height: 16px;
+					border-radius: 50%;
+					background: #6366f1;
+					margin-right: 0.5rem;
+					border: 2px solid #fff;
+					box-shadow: 0 0 0 2px #6366f1;
+					position: relative;
+					z-index: 2;
+				}
+				.timeline-vertical-item.active .timeline-dot {
+					box-shadow: 0 0 0 2px #e0e7ff;
+				}
+				.timeline-labels {
+					display: flex;
+					flex-direction: column;
+					gap: 0.1rem;
+				}
+				.timeline-year {
+					font-size: 1.1rem;
+					font-weight: bold;
+				}
+				.timeline-title {
+					font-size: 1rem;
+					color: #555;
+					word-break: break-word;
+					white-space: pre-line;
+					max-width: 224px;
+				}
+				.timeline-vertical-content {
+					flex: 1;
+					min-width: 0;
+				}
+				.timeline-content-box {
+					background: #fff;
+					border-radius: 12px;
+					box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+					padding: 2rem;
+					margin-left: 0;
+				}
+				@media (max-width: 900px) {
+					.timeline-vertical-container {
+						flex-direction: column;
+					}
+					.timeline-vertical-content {
+						width: 100%;
+						margin-top: 1.5rem;
+					}
+					.timeline-content-box {
+						margin-left: 0;
+					}
+				}
+			</style>
 		</main>
 		<Footer />
 	</body>
 </html>
+

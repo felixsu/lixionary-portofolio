@@ -1,0 +1,79 @@
+---
+import "../../assets/app.css";
+
+interface TimelineItem {
+    date: string
+    role: string
+    location: string
+    description: string
+    isFirst: boolean
+    isLast: boolean
+    isActive: boolean
+}
+
+const { items } = Astro.props as { items: any[] };
+
+const _items = []
+for (let i = 0; i < items.length; i++ ) {
+    const isFirst = i === 0;
+    const isLast = i === items.length - 1;
+    const currElement = items[i]
+    let _item: TimelineItem = {
+        date: currElement["date"],
+        role: currElement["role"],
+        location: currElement["location"],
+        description: currElement["description"],
+        isFirst: isFirst,
+        isLast: isLast,
+        isActive: false
+    }
+    _items.push(_item);
+}
+---
+
+<ul class="timeline timeline-vertical">
+{_items.map((item) => (
+    <li>
+    { item.isFirst ? 
+        <div class="timeline-start">{item.location}</div>
+        <div class="timeline-middle bg-secondary x-timeline-active">{item.date}</div>
+        <div class="timeline-end timeline-box">{item.role}</div>
+        <hr class="bg-primary"/> 
+    : item.isLast ? 
+        <hr/>
+        <div class="timeline-start">{item.location}</div> 
+        <div class="timeline-middle x-timeline-inactive">{item.date}</div>
+        <div class="timeline-end timeline-box">{item.role}</div>
+    : 
+        <hr />
+        <div class="timeline-start">{item.location}</div> 
+        <div class="timeline-middle x-timeline-inactive">{item.date}</div>
+        <div class="timeline-end timeline-box">{item.role}</div>
+        <hr /> }
+    </li>
+))}
+</ul> 
+
+<style>
+.x-timeline-active {
+    background: var(--pill-bg, #e0e7ff); /* fallback color, can be customized */
+    color: var(--pill-color, #22223b);
+    border-radius: 999px;
+    padding: 0.25em 1.25em;
+    display: inline-block;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    transition: background 0.2s;
+}
+.x-timeline-inactive {
+    background: var(--pill-inactive-bg, #f1f1f1); /* lighter or neutral color */
+    color: var(--pill-inactive-color, #888);
+    border-radius: 999px;
+    padding: 0.25em 1.25em;
+    display: inline-block;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    transition: background 0.2s;
+}
+</style>
+
