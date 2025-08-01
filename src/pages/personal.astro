@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import "../assets/app.css";
 
 const pageTitle = 'Personal Growth';
 ---
@@ -60,10 +61,13 @@ const pageTitle = 'Personal Growth';
 
 			<section class="mb-12">
 				<h2 class="text-2xl font-semibold mb-4">Early Life & Foundational Years</h2>
-				<img src="https://ik.imagekit.io/lixionary/lixionary-blog-content-personality-1.jpg" alt="Lixionary Personality" width="500" height="500" class="mx-auto mb-12 block rounded-lg shadow-lg" />
-				<p class="mb-4">
-					I grew up in <strong>Bandung, Indonesia</strong>, a city I just loved for its super mild temperatures. It's nestled in this natural basin, surrounded by amazing volcanic mountains, which kept things much cooler year-round – a nice break from the usual Indonesian heat! My early years there were with my mom, who raised me as a single parent since I was three.
-				</p>
+				<div class="columns-1 md:columns-2 lg:columns-2">
+					<img src="https://ik.imagekit.io/lixionary/lixionary-blog-content-personality-1.jpg" alt="Lixionary Personality" width="500" height="500" class="mx-auto mb-12 block rounded-lg shadow-lg" />
+					<p class="mb-4">
+						I grew up in <strong>Bandung, Indonesia</strong>, a city I just loved for its super mild temperatures. It's nestled in this natural basin, surrounded by amazing volcanic mountains, which kept things much cooler year-round – a nice break from the usual Indonesian heat! My early years there were with my mom, who raised me as a single parent since I was three.
+					</p>
+				</div>
+				
 				<p class="mb-4">
 					As a kid, I was mostly a homebody, not really hanging out much until high school. That's when my interest in tech really took off! PCs and early cell phones, like my favorite Nokia N73, totally grabbed my attention. I had a blast tinkering with computers, even back when upgrading GPUs and SATA hard drives was a thing. In class, I was all about Math, Physics, and Chemistry, loving anything that was quantifiable and measurable. I know now that being so rigid isn't always the best way to live, but hey, that's just how I was back then!
 				</p>
@@ -71,8 +75,36 @@ const pageTitle = 'Personal Growth';
 
 			<section class="mb-12">
 				<h2 class="text-2xl font-semibold mb-4">Evolution of My Interests and Mindset</h2>
-				<img src="https://ik.imagekit.io/lixionary/lixionary-blog-content-nerd-boy.jpg" alt="Lixionary Nerd" width="500" height="500" class="mx-auto mb-12 block rounded-lg shadow-lg" />
-				<img src="https://ik.imagekit.io/lixionary/lixionary-blog-content-happy-boy.jpg" alt="Lixionary Happy" width="500" height="500" class="mx-auto mb-12 block rounded-lg shadow-lg" />
+
+				<div class="flex w-full flex-col lg:flex-row">
+					<div class="card bg-base-100 card-sm shadow-sm">
+						<figure class="px-10 pt-10">
+							<img src="https://ik.imagekit.io/lixionary/lixionary-blog-content-nerd-boy.jpg" 
+								alt="Lixionary Nerd" width="640" height="640" 
+								class="rounded-xl" />
+						</figure>
+						
+						<div class="card-body">
+							<h4 class="card-title">Then: Rigid & Idealistic</h4>
+							<p>Strictly followed rules and theories, seeing things in black and white.</p>
+						</div>
+					</div>
+					<div class="divider md:divider-horizontal lg:divider-horizontal">
+						TO
+					</div>
+					<div class="card bg-sky-100 card-border card-sm shadow-sm">
+						<figure class="px-10 pt-10">
+							<img src="https://ik.imagekit.io/lixionary/lixionary-blog-content-happy-boy.jpg" 
+							alt="Lixionary Happy" width="640" height="640" 
+							class="rounded-xl" />
+						</figure>
+						<div class="card-body">
+							<h4 class="card-title">Now: Flexible & Empathetic</h4>
+							<p>Understands multiple perspectives and values compromise and connection..</p>
+						</div>
+					</div>
+				</div>
+				
 				<p class="mb-4">
 					My personal growth really started to pick up in high school, when I began to see how rigid I used to be, always sticking to theories and rules. After a couple of years navigating the social side of the professional world, I realized that life isn't always black and white; people see things from all sorts of angles, and there's no single "absolute truth." Holding onto my old ideals just held me back from trying new things and gaining more experience. That's when I started to loosen up and become more open to different ideas.
 				</p>
