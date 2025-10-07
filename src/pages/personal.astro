@@ -28,29 +28,9 @@ const pageTitle = 'Personal Growth';
 			}
 			.hobby-content {
 				display: none;
-				margin-top: 10px;
-				padding: 10px;
-				border: 1px solid #ccc;
-				border-radius: 10px;
 			}
 			.hobby-content.active {
 				display: block;
-			}
-			.card {
-				border: 1px solid #ccc;
-				border-radius: 8px;
-				margin-bottom: 15px;
-				overflow: hidden;
-			}
-			.card-header {
-				background-color: #f0f0f0;
-				padding: 15px;
-				cursor: pointer;
-				font-weight: bold;
-			}
-			.card-content {
-				padding: 15px;
-				display: none;
 			}
 		</style>
 	</head>
@@ -76,7 +56,7 @@ const pageTitle = 'Personal Growth';
 			<section class="mb-12">
 				<h2 class="mb-4">Evolution of My Interests, Mindset</h2>
 
-				<div class="flex w-full flex-col lg:flex-row">
+				<div class="flex w-full flex-col lg:flex-row mb-4">
 					<div class="card bg-base-100 card-sm shadow-sm">
 						<figure class="px-10 pt-10">
 							<img src="https://ik.imagekit.io/lixionary/lixionary-blog-content-nerd-boy.jpg" 
@@ -114,37 +94,28 @@ const pageTitle = 'Personal Growth';
 				<p class="mb-4">
 					Here are some of the key life lessons I've picked up along the way, often through trial and error:
 				</p>
-				<div class="lessons-container">
-					<div class="card">
-						<div class="card-header">It’s okay to do mistake, it built your maturity, to accept imperfection.</div>
-						<div class="card-content">
-							<p>I learned that perfection is an illusion, and real growth comes from acknowledging errors, learning from them, and moving forward. This shift helped me become a more resilient and understanding person, both personally and professionally.</p>
-						</div>
-					</div>
-
-					<div class="card">
-						<div class="card-header">Give respect, being humble to the people around you.</div>
-						<div class="card-content">
-							<p>I found that approaching interactions with humility and genuine respect, even when faced with challenging personalities or situations, fosters much more positive outcomes. It's about building bridges, not burning them.</p>
-						</div>
-					</div>
-
-					<div class="card">
-						<div class="card-header">Any commitment you made has its own consequences, and you need to deal with it.</div>
-						<div class="card-content">
-							<p>Whether it's a small promise to a friend or a major professional decision, I've learned the importance of accountability. Understanding that every action has a ripple effect has made me more deliberate and responsible in my choices.</p>
-						</div>
-					</div>
-
-					<div class="card">
-						<div class="card-header">We live inside a system, and we need to adapt with it.</div>
-						<div class="card-content">
-							<p>Life isn't always about ideal scenarios or textbook rules. I've realized that society, laws, and cultural norms form complex systems. Learning to understand these systems, navigate their constraints, and adapt my approach is crucial for achieving goals and living harmoniously, rather than constantly fighting against the current.</p>
-						</div>
-					</div>
+				<div class="collapse collapse-plus bg-base-100 border border-base-300 mb-4">
+					<input type="checkbox" name="key-life-1" checked="checked" />
+					<div class="collapse-title font-semibold">It’s okay to do mistake, it built your maturity, to accept imperfection.</div>
+					<div class="collapse-content text-sm">I learned that perfection is an illusion, and real growth comes from acknowledging errors, learning from them, and moving forward. This shift helped me become a more resilient and understanding person, both personally and professionally</div>
+				</div>
+				<div class="collapse collapse-plus bg-base-100 border border-base-300 mb-4">
+					<input type="checkbox" name="key-life-2" />
+					<div class="collapse-title font-semibold">Give respect, being humble to the people around you.</div>
+					<div class="collapse-content text-sm">I found that approaching interactions with humility and genuine respect, even when faced with challenging personalities or situations, fosters much more positive outcomes. It's about building bridges, not burning them.</div>
+				</div>
+				<div class="collapse collapse-plus bg-base-100 border border-base-300 mb-4">
+					<input type="checkbox" name="key-life-3" />
+					<div class="collapse-title font-semibold">Any commitment you made has its own consequences, and you need to deal with it.</div>
+					<div class="collapse-content text-sm">Whether it's a small promise to a friend or a major professional decision, I've learned the importance of accountability. Understanding that every action has a ripple effect has made me more deliberate and responsible in my choices.</div>
+				</div>
+				<div class="collapse collapse-plus bg-base-100 border border-base-300 mb-4">
+					<input type="checkbox" name="key-life-4" />
+					<div class="collapse-title font-semibold">We live inside a system, and we need to adapt with it.</div>
+					<div class="collapse-content text-sm">Life isn't always about ideal scenarios or textbook rules. I've realized that society, laws, and cultural norms form complex systems. Learning to understand these systems, navigate their constraints, and adapt my approach is crucial for achieving goals and living harmoniously, rather than constantly fighting against the current.</div>
 				</div>
 
-				<p class="mt-4">
+				<p>
 					I got those points after getting through living with my friends, working colleagues, and my wife, where administration, law, and culture became the very real constraints that you need to follow in order to live and thrive.
 				</p>
 			</section>
@@ -175,8 +146,23 @@ const pageTitle = 'Personal Growth';
 					</button>
 				</div>
 
+				<div id="x-photography-content" class="card card-border bg-base-100 x-hobby-content">
+					<figure>
+						<img
+							src="https://ik.imagekit.io/lixionary/lixionary-blog-content-photogrphy.jpg"
+							alt="Milky Way at Ujung Kulon, May 2024" />
+					</figure>
+					<div class="card-body">
+						<h2 class="card-title">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+							Photography
+						</h2>
+						<p>I've really dived into photography, spending hours honing my craft and developing my own unique style. You can see more of my work on my <a href="https://www.instagram.com/lixsu/">Instagram</a> and <a href="https://lixionary.myportfolio.com/">my photography blog</a>.</p>
+						</div>
+					</div>
+				</div>
 				<div id="photography-content" class="hobby-content">
-					<p>I've really dived into photography, spending hours honing my craft and developing my own unique style. You can see more of my work on my Instagram and my photography blog.</p>
+					<p>I've really dived into photography, spending hours honing my craft and developing my own unique style. You can see more of my work on my <a href="https://www.instagram.com/lixsu/">Instagram</a> and <a href="https://lixionary.myportfolio.com/">my photography blog</a>.</p>
 				</div>
 				<div id="traveling-content" class="hobby-content">
 					<p>Exploring new places and cultures whenever I get the chance is a huge passion. Some of my favorite adventures include trips to Bali, Lombok, Ijen Craters, Labuan Bajo, Papandayan Mountain, the Southern Java Coast, Ujung Kulon, Ujung Genteng, Sukabumi, Kelimutu Crater, Bromo Mountain, Tangkuban Parahu Crater, and Ambon.</p>
@@ -209,15 +195,6 @@ const pageTitle = 'Personal Growth';
 								content.classList.remove('active');
 							}
 						});
-					});
-				});
-
-				const cardHeaders = document.querySelectorAll('.card-header');
-
-				cardHeaders.forEach(header => {
-					header.addEventListener('click', () => {
-						const content = header.nextElementSibling;
-						content.style.display = content.style.display === 'block' ? 'none' : 'block';
 					});
 				});
 			});
